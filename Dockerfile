@@ -2,7 +2,7 @@
 
 FROM openshift/base-centos7
 
-MAINTAINER SoftwareCollections.org <sclorg@redhat.com>
+MAINTAINER Tin Hanchanachai <tinhanc@gmail.com>
 
 EXPOSE 8080
 
