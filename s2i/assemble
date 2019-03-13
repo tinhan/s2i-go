@@ -24,11 +24,17 @@ echo "---> Downloading dependencies..."
 go get -v ./...
 
 echo "---> Building application source..."
-go build -v -o main
-go install main
+CGO_ENABLED=0 GOOS=linux go build -v -a -tags netgo -ldflags '-w' -o main .
+# CGO_ENABLED=0 go build -v -a -ldflags '-s' -installsuffix cgo -o main .
+# go build -v -o main
+
+# SKIP INSTALLING SINCE THIS IS JUST A STATIC GO BUILDER
+# go install main
 
 echo
 echo "===> Build completed at $(date)"
 
 # Fix source directory permissions
 fix-permissions ./
+
+echo "Binary at $SOURCE"
