@@ -2,4 +2,4 @@
 
 set -e
 
-exec $GOBIN/main
+exec /opt/app-root/main
