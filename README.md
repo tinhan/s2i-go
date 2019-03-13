@@ -9,18 +9,23 @@ $ oc logs -f bc/golang-s2i
 The application image combines the builder image with your applications source code, which is served using whatever application is installed via the Dockerfile, compiled using the assemble script, and run using the run script. The following command will create the application image and run it:
 
 $ oc new-app --strategy=source --context-dir=test/test-app --name golang-s2i-api golang-s2i~https://github.com/tinhan/s2i-go.git
+
 $ oc logs -f bc/golang-s2i-api
+
 Using the logic defined in the assemble script, s2i will now create an application image using the builder image as a base and including the source code from the test/test-app directory.
 
 # Creating a route for the application is needed to use it :
+
 $ oc expose service golang-s2i-api
 $ oc get route golang-s2i-api
+
 The application, which consists of a simple static web page, should now be accessible at the url shown on last command (oc get route) :
 
 $ curl "http://$(oc get route golang-centos7-app |awk '$1 == "golang-centos7-app" {print $2}')/"
-
+\
 
 # Create Builder
+
 oc new-build golang-s2i~https://github.com/tinhan/go-restful-api-example --name=builder
 oc logs -f bc/builder
 
