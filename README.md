@@ -26,7 +26,7 @@ $ curl "http://$(oc get route golang-centos7-app |awk '$1 == "golang-centos7-app
 
 # Create Builder
 
-oc new-build golang-s2i~https://github.com/tinhan/go-restful-api-example --name=builder
+oc new-build golang-s2i~https://github.com/tinhan/go-restful-api-example --name=builder   
 oc logs -f bc/builder
 
 
