@@ -2,7 +2,7 @@
 Create the builder image
 The following command will create a builder image named golang-centos7.
 
-$ oc new-build https://github.com/tinhan/s2i-go.git --name=golang-s2i
+$ oc new-build https://github.com/tinhan/s2i-go.git --name=golang-s2i  
 $ oc logs -f bc/golang-s2i
 
 # Creating and running the application image
