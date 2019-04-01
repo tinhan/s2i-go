@@ -13,10 +13,10 @@ $ oc logs -f bc/builder
 
 #### Generated artifact is located in /opt/app-root/src/go/src/main/main (Final image copy only runtime file)
 ```
-$ oc new-build --name=runtime /\
-   --docker-image=scratch /\
-   --source-image=builder-apiname /\
-   --source-image-path=/opt/app-root/src/go/src/main/main:. /\
+$ oc new-build --name=runtime /
+   --docker-image=scratch /
+   --source-image=builder-apiname /
+   --source-image-path=/opt/app-root/src/go/src/main/main:. /
    --dockerfile=$'FROM scratch\nCOPY main /main\nEXPOSE 8080\nENTRYPOINT ["/main"]'
 
 $ oc logs -f bc/runtime
